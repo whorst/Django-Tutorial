@@ -10,6 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
+'''
+///////
+A Python Module with Module-Level Variables
+///////
+'''
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -30,13 +36,16 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+#Installed Apps holds the names of all Django applications that are available in this instance
+
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'polls.apps.PollsConfig',       # Informs Django of the polls app
+    'django.contrib.admin',        # The admin site
+    'django.contrib.auth',         # The Authentication System
+    'django.contrib.contenttypes', #A framework for content types
+    'django.contrib.sessions',     #A session Framework
+    'django.contrib.messages',     #A messaging Framework
+    'django.contrib.staticfiles',  #A framwork for managing static files
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -76,8 +85,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE'  : 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME'    : 'vagrant',                      # Or path to database file if using sqlite3.
+        'USER'    : 'vagrant',                      # Not used with sqlite3.
+        'PASSWORD': 'vagrant',                  # Not used with sqlite3.
+        'HOST'    : '127.0.0.1',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT'    : '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -106,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Detroit'
 
 USE_I18N = True
 
