@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
-
+import datetime
 from django.views import generic
 from .models import Choice, Question
 #urls.py will tell different web addresses to render different html templates.
