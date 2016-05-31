@@ -21,13 +21,16 @@ These can either be function or class based views.
 ///////
 '''
 
-from django.conf.urls import url
+
+
+from django.conf.urls import url, patterns
+#from django.conf.urls.defaults import *
 from django.conf.urls import include
 from django.contrib import admin
 
 
 
 urlpatterns = [
-    url(r'^polls/', include('polls.urls')),
+    url(r'^polls/', include('polls.urls')), # When you load up the site, one can either go to poll.urls or admin.site.urls
     url(r'^admin/', admin.site.urls),
 ]

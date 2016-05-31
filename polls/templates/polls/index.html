@@ -1,0 +1,10 @@
+{% if latest_question_list %}             <!--If latest_question_list is not empty-->
+  <ul>
+    {% for question in latest_question_list %}    <!--For every question in the question list-->
+<li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+  </ul>
+
+  {% else %}
+    <p> No polls are available </p>    <!--If there's nothing in latest_question_list, simply print that.-->
+  {% endif %}
