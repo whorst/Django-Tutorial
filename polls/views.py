@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 import datetime
 from django.views import generic
 from .models import Choice, Question
+from django.utils import timezone
 #urls.py will tell different web addresses to render different html templates.
 
 class IndexView(generic.ListView):
@@ -12,7 +13,13 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         #return the last five published questions
-        return Question.objects.order_by('-pub_date')[:5]
+        return Question.objects.filter(pub_date__lte= timezone.now()).order_by('-pub_date')[:5]
+        #Filters can narrow down the query based on given parameters.
+        #Filters Return a new QuerySet containing objects that match the given lookup parameters.
+        '''
+        Question.objects.filter(pub_date__lte=timezone.now()) returns a queryset containing Questions
+        whose pub_date is less than or equal to - that is, earlier than or equal to - timezone.now.
+        '''
 
 class DetailView(generic.DetailView):
     model = Question

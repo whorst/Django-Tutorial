@@ -1,7 +1,11 @@
 {% if latest_question_list %}             <!--If latest_question_list is not empty-->
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+
   <ul>
     {% for question in latest_question_list %}    <!--For every question in the question list-->
-<li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
     {% endfor %}
   </ul>
 
